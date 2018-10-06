@@ -1,19 +1,21 @@
 package main
 import "fmt"
+
+// global use var
+var arrRes = [][]int{}
+
 func main() {
-	arrRes := gen(5)
+	gen(5)
 	fmt.Println(arrRes)	
 }
 
-func gen(numRows int) [][]int {
-	arrRes := [][]int{}
-	arrRes = build(numRows, 0, arrRes)
-	return arrRes
+func gen(numRows int) { 
+	build(numRows, 0)
 }
 
-func build(n int, level int, arrRes [][]int) [][]int {
+func build(n int, level int) {
 	if(n == level) {
-		return arrRes 
+		return 
 	}
 
 	arr := []int{}
@@ -28,8 +30,7 @@ func build(n int, level int, arrRes [][]int) [][]int {
 	}
 
 	arrRes = append(arrRes, arr)
-	arrRes = build(n, level+1, arrRes)
-	return arrRes;
+	build(n, level+1)
 }
 
 func comb(arr []int) []int{

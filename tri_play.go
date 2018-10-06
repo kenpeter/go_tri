@@ -1,19 +1,21 @@
+// https://leetcode.com/problems/pascals-triangle/
+
 package main
 import "fmt"
+
 func main() {
-	arrRes := gen(5)
+	arrRes := [][]int{}
+	gen(5, arrRes)
 	fmt.Println(arrRes)	
 }
 
-func gen(numRows int) [][]int {
-	arrRes := [][]int{}
-	arrRes = build(numRows, 0, arrRes)
-	return arrRes
+func gen(numRows int, arrRes [][]int) { 
+	build(numRows, 0, arrRes)
 }
 
-func build(n int, level int, arrRes [][]int) [][]int {
+func build(n int, level int, arrRes [][]int) {
 	if(n == level) {
-		return arrRes 
+		return 
 	}
 
 	arr := []int{}
@@ -28,8 +30,7 @@ func build(n int, level int, arrRes [][]int) [][]int {
 	}
 
 	arrRes = append(arrRes, arr)
-	arrRes = build(n, level+1, arrRes)
-	return arrRes;
+	build(n, level+1, arrRes)
 }
 
 func comb(arr []int) []int{
