@@ -9,11 +9,11 @@ func main() {
 	fmt.Println(arrRes)	
 }
 
-func gen(numRows int, arrRes [][]int) { 
+func gen(numRows int, arrRes *[][]int) { 
 	build(numRows, 0, arrRes)
 }
 
-func build(n int, level int, arrRes [][]int) {
+func build(n int, level int, arrRes *[][]int) {
 	if(n == level) {
 		return 
 	}
