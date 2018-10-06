@@ -5,11 +5,14 @@ import "fmt"
 
 func main() {
 	arrRes := [][]int{}
-	gen(5, arrRes)
+	// pass ref
+	gen(6, &arrRes)
 	fmt.Println(arrRes)	
 }
 
+// point to arr
 func gen(numRows int, arrRes *[][]int) { 
+	// point to arr 
 	build(numRows, 0, arrRes)
 }
 
@@ -25,11 +28,12 @@ func build(n int, level int, arrRes *[][]int) {
         arr = append(arr, 1, 1)
 	} else {
 		// get it out
-		tmp := arrRes[level-1]
+		tmp := (*arrRes)[level-1]
 		arr = comb(tmp)
 	}
 
-	arrRes = append(arrRes, arr)
+	// (*arrRes), actual val, change)
+	*arrRes = append(*arrRes, arr)
 	build(n, level+1, arrRes)
 }
 
